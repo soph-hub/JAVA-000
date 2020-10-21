@@ -1,0 +1,53 @@
+Compiled from "Hello.java"
+public class org.geekbang.homework.Hello {
+  public org.geekbang.homework.Hello();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: ldc2_w        #7                  // double 10.0d Push long or double from run-time constant pool (wide index)
+       3: dstore_1                          // Store double into local variable 位置[1]
+       4: ldc2_w        #9                  // double 2.0d Push long or double from run-time constant pool (wide index)
+       7: dstore_3                          // Store double into local variable 位置[3]
+       8: dload_1                           // Load double from local variable
+       9: dload_3                           // Load double from local variable
+      10: invokestatic  #11                 // Method add:(DD)D 调用静态方法 double add(double, double)
+      13: dstore        5                   // Store double into local variable 位置[5]
+      15: dload_1                           // Load double from local variable
+      16: dload_3                           // Load double from local variable
+      17: invokestatic  #17                 // Method subtract:(DD)D 调用静态方法 double subtract(double, double)
+      20: dstore        7                   // Store double from local variable
+      22: dload_1                           // Load double from local variable
+      23: dload_3                           // Load double from local variable
+      24: invokestatic  #20                 // Method multiply:(DD)D 调用静态方法 double multiply(double, double)
+      27: dstore        9                   // Store double from local variable
+      29: dload_1                           // Load double from local variable
+      30: dload_3                           // Load double from local variable
+      31: invokestatic  #23                 // Method divide:(DD)D 调用静态方法 double divide(double, double)
+      34: dstore        11                  // Store double from local variable
+      36: dload         5                   // Load double from local variable
+      38: ldc2_w        #26                 // double 12.0d Push long or double from run-time constant pool (wide index)
+      41: dcmpl
+      42: ifne          56
+      45: getstatic     #28                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      48: ldc           #34                 // String yes, Push item from run-time constant pool
+      50: invokevirtual #36                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      53: goto          64
+      56: getstatic     #28                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      59: ldc           #42                 // String no, Push item from run-time constant pool
+      61: invokevirtual #36                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      64: iconst_0                          // Push int constant
+      65: istore        13                  // Store double from local variable
+      67: iload         13                  // Load double from local variable
+      69: iconst_5                          // Push int constant
+      70: if_icmpge     87
+      73: getstatic     #28                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      76: iload         13                  // Load double from local variable
+      78: invokevirtual #44                 // Method java/io/PrintStream.println:(I)V
+      81: iinc          13, 1               // Increment local variable by constant
+      84: goto          67
+      87: return
+}
