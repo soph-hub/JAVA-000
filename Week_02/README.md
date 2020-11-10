@@ -1,3 +1,18 @@
+JVM 核心技术 -- 调优分析 && 面试经验
+1. GC 日志解读与分析 *
+2. JVM 线程堆栈数据分析
+3. 内存分析与相关工具 *
+4. JVM 问题分析调优经验
+5. GC 疑难情况问题分析
+6. JVM 常见面试题汇总 *
+
+NIO 模型 && Netty 入门
+1. Java Socket 编程：如何基于 Socket 实现 Server *
+2. 深入讨论 IO：Server 处理时到底发生了什么 *
+3. IO 模型与相关概念：怎么理解 NIO *
+4. Netty 框架简介：什么是 Netty
+5. Netty 使用实例：如何使用 Netty 实现 NIO *
+
 ##macOS 使用JDK15
 ####问题：
     1. [warning][gc] -XX:+PrintGC is deprecated. Will use -Xlog:gc instead.
