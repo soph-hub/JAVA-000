@@ -6,10 +6,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**
- * @author Yaphet
- * @date 2020/10/18
- */
 public class HelloClassloader extends ClassLoader {
     public static void main(String[] args) {
         try {

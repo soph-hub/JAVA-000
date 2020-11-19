@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import org.geekbang.homework.util.MathUtils;
+import org.geekbang.homework.utils.MathUtils;
 
 /**
  * ThreadPool.submit 实现

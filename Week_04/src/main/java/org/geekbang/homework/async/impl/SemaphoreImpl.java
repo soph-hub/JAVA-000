@@ -1,10 +1,8 @@
 package org.geekbang.homework.async.impl;
 
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
-import lombok.SneakyThrows;
-import org.geekbang.homework.util.MathUtils;
+import org.geekbang.homework.utils.MathUtils;
 
 /**
  * Semaphore 实现

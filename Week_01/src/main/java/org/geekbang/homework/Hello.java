@@ -1,9 +1,5 @@
 package org.geekbang.homework;
 
-/**
- * @author Yaphet
- * @date 2020/10/18
- */
 public class Hello {
 
     public static void main(String[] args) {

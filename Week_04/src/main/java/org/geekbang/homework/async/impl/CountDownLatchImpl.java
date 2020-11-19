@@ -2,7 +2,7 @@ package org.geekbang.homework.async.impl;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.geekbang.homework.util.MathUtils;
+import org.geekbang.homework.utils.MathUtils;
 
 /**
  * CountDownLatch 实现

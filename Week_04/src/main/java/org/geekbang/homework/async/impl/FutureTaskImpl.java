@@ -2,7 +2,7 @@ package org.geekbang.homework.async.impl;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
-import org.geekbang.homework.util.MathUtils;
+import org.geekbang.homework.utils.MathUtils;
 
 /**
  * FutureTask.get 实现

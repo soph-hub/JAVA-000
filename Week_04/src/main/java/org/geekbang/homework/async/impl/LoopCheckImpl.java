@@ -1,6 +1,6 @@
 package org.geekbang.homework.async.impl;
 
-import org.geekbang.homework.util.MathUtils;
+import org.geekbang.homework.utils.MathUtils;
 
 /**
  * LoopLookup 循环检查 实现

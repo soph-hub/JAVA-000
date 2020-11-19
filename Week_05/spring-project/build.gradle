@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.4.0'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+}
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    mavenCentral()
+}
+
+// JDK 版本号要求
+sourceCompatibility = 15
+targetCompatibility = 15
+
+group = 'org.geekbang.homework'
+version = '1.0.0-SNAPSHOT'
+
+description = "Week_05:spring-project"
+
+dependencies {
+    implementation 'org.springframework:spring-core'
+    implementation 'org.springframework:spring-context'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}

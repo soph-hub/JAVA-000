@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- xml 构造函数 实例化 Bean -->
+    <bean id="xmlStudent" class="org.geekbang.homework.entity.Student">
+        <constructor-arg name="id" value="01"/>
+        <constructor-arg name="name" value="student-by-xml-constructor"/>
+    </bean>
+    <!-- xml 属性 实例化 Bean -->
+<!--    <bean id="xmlStudent" class="org.geekbang.homework.entity.Student">-->
+<!--        <property name="id" value="01"/>-->
+<!--        <property name="name" value="student-by-xml-property"/>-->
+<!--    </bean>-->
+
+    <!-- 将 Spring 容器中 "xmlStudent" Bean 关联/建立别名 - "xml-student" -->
+    <alias name="xmlStudent" alias="xml-student" />
+
+    <!-- 静态工厂方法 - 实例化 Bean -->
+    <bean id="student-by-static-method" class="org.geekbang.homework.entity.Student" factory-method="create"/>
+
+    <!-- 实例工厂方法 - 实例化 Bean -->
+    <bean id="studentFactory" class="org.geekbang.homework.beans.factory.config.DefaultStudentFactory"/>
+    <bean id="student-by-instance-method" factory-bean="studentFactory" factory-method="instance"/>
+
+    <!-- FactoryBean - 实例化 Bean -->
+    <bean id="student-by-factory-bean" class="org.geekbang.homework.beans.factory.config.StudentFactoryBean" />
+
+    <!-- ObjectFactory - 延迟实例化 Bean -->
+    <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+        <property name="targetBeanName" value="xmlStudent"/>
+    </bean>
+
+    <bean id="studentFactoryServiceLoader" class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
+        <property name="serviceType" value="org.geekbang.homework.beans.factory.StudentFactory" />
+    </bean>
+</beans>

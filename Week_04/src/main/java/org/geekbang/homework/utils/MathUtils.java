@@ -1,4 +1,4 @@
-package org.geekbang.homework.util;
+package org.geekbang.homework.utils;
 
 import java.util.function.Function;
 

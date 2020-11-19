@@ -3,6 +3,8 @@ plugins {
     id 'idea'
 }
 
+description = "Week_03"
+
 group 'org.geekbang.homework'
 version '1.0.0-SNAPSHOT'
 

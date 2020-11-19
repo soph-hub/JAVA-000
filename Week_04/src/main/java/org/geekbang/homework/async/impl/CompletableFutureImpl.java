@@ -2,7 +2,7 @@ package org.geekbang.homework.async.impl;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import org.geekbang.homework.util.MathUtils;
+import org.geekbang.homework.utils.MathUtils;
 
 /**
  * CompletableFuture.supplyAsync 实现
