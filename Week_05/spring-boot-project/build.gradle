@@ -20,6 +20,7 @@ description = "Week_05:spring-boot-project"
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'com.zaxxer:HikariCP'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
