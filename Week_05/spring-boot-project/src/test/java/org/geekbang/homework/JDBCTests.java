@@ -5,12 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.sql.DataSource;
 import org.geekbang.homework.utils.JdbcUtils;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class JDBCTests {
+
     /**
      * 测试添加数据
      */
@@ -146,4 +150,5 @@ public class JDBCTests {
             e.printStackTrace();
         }
     }
+
 }
