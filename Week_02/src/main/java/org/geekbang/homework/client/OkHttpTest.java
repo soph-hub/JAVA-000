@@ -18,7 +18,7 @@ public class OkHttpTest {
             .url(BASE_URL)
             .build();
         Call call = client.newCall(request);
-        try (Response response = call.execute();){
+        try (Response response = call.execute()){
             System.out.println(Objects.requireNonNull(response.body()).string());
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.geekbang.homework.dynamic.datasource.autoconfigure.DynamicDataSourceAutoConfiguration

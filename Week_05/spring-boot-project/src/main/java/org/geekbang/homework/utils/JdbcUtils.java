@@ -9,7 +9,7 @@ public class JdbcUtils {
     /**
      * 它为null表示没有事务 它不为null表示有事务 当开启事务时，需要给它赋值 当结束事务时，需要给它赋值为null 并且在开启事务时，让dao的多个方法共享这个Connection
      */
-    private static ThreadLocal<Connection> tl = new ThreadLocal<>();
+    private static final ThreadLocal<Connection> tl = new ThreadLocal<>();
 
     /**
      * dao使用本方法来获取连接
