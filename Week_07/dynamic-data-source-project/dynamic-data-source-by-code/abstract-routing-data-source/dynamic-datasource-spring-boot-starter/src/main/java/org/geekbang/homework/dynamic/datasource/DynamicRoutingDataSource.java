@@ -80,11 +80,11 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource implemen
             return determinePrimaryDataSourceName();
         } else if (!groupDataSources.isEmpty() && groupDataSources.containsKey(ds)) {
             // 如果有数据源分组，则判断指定的是否是数据源分组，例如配置了数据源slave-1,slave-2，这个时候，指定使用的数据源是slave，则会先选择slave分组，再从分组里选择一个数据源
-            log.debug("dynamic-datasource switch to the datasource named [{}]", ds);
+            log.info("dynamic-datasource switch to the datasource named [{}]", ds);
             return groupDataSources.get(ds).determineDataSource();
         } else if (dataSourceMap.containsKey(ds)) {
             // 如果没有对应的数据源分组，则直接根据数据源名称来获取数据源
-            log.debug("dynamic-datasource switch to the datasource named [{}]", ds);
+            log.info("dynamic-datasource switch to the datasource named [{}]", ds);
             return ds;
         }
         // 找不到指定数据源，就没办法实现粘性访问
@@ -97,7 +97,7 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource implemen
 
     // 没有指定数据源的时候，就使用默认数据源
     private String determinePrimaryDataSourceName() {
-        log.debug("dynamic-datasource switch to the primary datasource");
+        log.info("dynamic-datasource switch to the primary datasource");
         return groupDataSources.containsKey(primary)
             ? groupDataSources.get(primary).determineDataSource()
             : primary;
