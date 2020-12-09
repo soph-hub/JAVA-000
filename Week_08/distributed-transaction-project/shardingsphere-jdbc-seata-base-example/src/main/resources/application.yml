@@ -1,0 +1,82 @@
+spring.shardingsphere.datasource.names: ds-0,ds-1
+
+spring.shardingsphere.datasource.common.type: com.zaxxer.hikari.HikariDataSource
+spring.shardingsphere.datasource.common.driver-class-name: com.mysql.cj.jdbc.Driver
+spring.shardingsphere.datasource.common.username: root
+spring.shardingsphere.datasource.common.password: root
+
+spring.shardingsphere.datasource.ds-0.jdbc-url: jdbc:mysql://localhost:3316/sharding?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+spring.shardingsphere.datasource.ds-1.jdbc-url: jdbc:mysql://localhost:3326/sharding?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+
+#广播表
+spring.shardingsphere.rules.sharding.broadcast-tables: t_user,t_address
+#分库分表
+spring.shardingsphere.rules.sharding.binding-tables: t_order,t_order_item
+
+#根据 user_id 取模分库
+spring.shardingsphere.rules.sharding.default-database-strategy.standard.sharding-column: user_id
+spring.shardingsphere.rules.sharding.default-database-strategy.standard.sharding-algorithm-name: database-inline
+spring.shardingsphere.rules.sharding.sharding-algorithms.database-inline.type: INLINE
+spring.shardingsphere.rules.sharding.sharding-algorithms.database-inline.props.algorithm-expression: ds-$->{user_id % 2}
+
+
+#order 表根据 order_id 取模分表
+spring.shardingsphere.rules.sharding.sharding-algorithms.t-order-inline.type: INLINE
+spring.shardingsphere.rules.sharding.sharding-algorithms.t-order-inline.props.algorithm-expression: t_order_$->{order_id % 16}
+spring.shardingsphere.rules.sharding.tables.t_order.actual-data-nodes: ds-$->{0..1}.t_order_$->{0..15}
+spring.shardingsphere.rules.sharding.tables.t_order.table-strategy.standard.sharding-column: order_id
+spring.shardingsphere.rules.sharding.tables.t_order.table-strategy.standard.sharding-algorithm-name: t-order-inline
+spring.shardingsphere.rules.sharding.tables.t_order.key-generate-strategy.column: order_id
+spring.shardingsphere.rules.sharding.tables.t_order.key-generate-strategy.key-generator-name: snowflake
+
+#order_item 表根据 order_id 取模分表
+spring.shardingsphere.rules.sharding.sharding-algorithms.t-order-item-inline.type: INLINE
+spring.shardingsphere.rules.sharding.sharding-algorithms.t-order-item-inline.props.algorithm-expression: t_order_item_$->{order_id % 16}
+spring.shardingsphere.rules.sharding.tables.t_order_item.actual-data-nodes: ds-$->{0..1}.t_order_item_$->{0..15}
+spring.shardingsphere.rules.sharding.tables.t_order_item.table-strategy.standard.sharding-column: order_id
+spring.shardingsphere.rules.sharding.tables.t_order_item.table-strategy.standard.sharding-algorithm-name: t-order-item-inline
+spring.shardingsphere.rules.sharding.tables.t_order_item.key-generate-strategy.column: order_item_id
+spring.shardingsphere.rules.sharding.tables.t_order_item.key-generate-strategy.key-generator-name: snowflake
+
+#定义主键生成策略：雪花算法
+spring.shardingsphere.rules.sharding.key-generators.snowflake.type: SNOWFLAKE
+#雪花算法 - 工作机器唯一标识
+spring.shardingsphere.rules.sharding.key-generators.snowflake.props.worker-id: 123
+#雪花算法 - 最大抖动上限值，范围[0, 4096)。注：若使用此算法生成值作为分片值，建议配置此属性。此算法在不同毫秒内所生成的 key 取模 2^n(2^n一般为分库或分表数) 之后结果总为0或1。为防止上述分片问题，建议将此属性值配置为2^n - 1
+spring.shardingsphere.rules.sharding.key-generators.snowflake.props.max-vibration-offset: 15
+
+#mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: org.geekbang.homework.entity
+  global-config:
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: assign_id
+      #表名前缀
+      table-prefix: "t_"
+      #表名是否使用驼峰转下划线命名,只对表名生效
+      table-underline: true
+      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      insert-strategy: not_empty
+      update-strategy: not_empty
+      select-strategy: not_empty
+      #数据库大写下划线转换
+      #capital-mode: true
+      #序列接口实现类配置
+      #key-generator: com.baomidou.springboot.xxx
+      #逻辑删除配置（下面3个配置）
+      logic-delete-field: isDelete
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+    #自定义SQL注入器
+    #sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    #自定义填充策略接口实现
+    #meta-object-handler: com.baomidou.springboot.xxx
+  configuration:
+    #开启自动驼峰命名规则映射
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+spring.main.allow-bean-definition-overriding: true
