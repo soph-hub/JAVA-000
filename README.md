@@ -17,6 +17,7 @@
 ![ ](Week_11/image/image-分布式缓存.jpg)
 ### 9. 分布式消息
 ![ ](Week_13/image/image-分布式消息.jpg)
+![ ](Week_13/image/image-redis.jpg)
 ### 10. 分布式系统架构
 ![ ](Week_14/image/image-分布式系统架构.jpg)
 ### 11. 业务系统重构
