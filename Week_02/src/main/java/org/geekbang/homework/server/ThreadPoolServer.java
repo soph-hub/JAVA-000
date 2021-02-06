@@ -14,7 +14,7 @@ public class ThreadPoolServer {
 
     public static void main(String[] args) throws IOException {
         ExecutorService executorService = Executors.newFixedThreadPool(40);
-        ServerSocket serverSocket = new ServerSocket(8080);
+        ServerSocket serverSocket = new ServerSocket(8082);
         while (true) {
             try {
                 final Socket socket = serverSocket.accept();
@@ -32,7 +32,7 @@ public class ThreadPoolServer {
             printWriter.println("HTTP/1.1 200 ok");
             printWriter.println("Content-Type:text/html;charset=utf-8");
             printWriter.println();
-            printWriter.println("hello.nio");
+            printWriter.println("Hello.ThreadPool");
             printWriter.close();
             socket.close();
             System.out.println(ThreadPoolServer.class.getSimpleName());

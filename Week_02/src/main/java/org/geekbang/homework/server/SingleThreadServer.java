@@ -8,7 +8,7 @@ import java.net.Socket;
 /**
  * 单线程阻塞服务
  */
-public class SingleServer {
+public class SingleThreadServer {
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(8080);
@@ -29,10 +29,10 @@ public class SingleServer {
             printWriter.println("HTTP/1.1 200 ok");
             printWriter.println("Content-Type:text/html;charset=utf-8");
             printWriter.println();
-            printWriter.println("hello.nio");
+            printWriter.println("Hello.SingleThread");
             printWriter.close();
             socket.close();
-            System.out.println(SingleServer.class.getSimpleName());
+            System.out.println(SingleThreadServer.class.getSimpleName());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
